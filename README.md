@@ -6,7 +6,7 @@ from stringified results
 You can also pass in a custom comparison function.
 
 [![Build Status](https://travis-ci.org/epoberezkin/fast-json-stable-stringify.svg?branch=master)](https://travis-ci.org/epoberezkin/fast-json-stable-stringify)
-
+[![Coverage Status](https://coveralls.io/repos/github/epoberezkin/fast-json-stable-stringify/badge.svg?branch=master)](https://coveralls.io/github/epoberezkin/fast-json-stable-stringify?branch=master)
 
 # example
 
