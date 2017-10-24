@@ -16,7 +16,7 @@ module.exports = function (obj, opts) {
     })(opts.cmp);
 
     var seen = [];
-    return (function stringify (parent, key, node, level) {
+    return (function stringify (node) {
         if (node && node.toJSON && typeof node.toJSON === 'function') {
             node = node.toJSON();
         }
@@ -27,34 +27,34 @@ module.exports = function (obj, opts) {
         if (typeof node !== 'object' || node === null) {
             return JSON.stringify(node);
         }
+        var i, out;
         if (Array.isArray(node)) {
-            var out = [];
-            for (var i = 0; i < node.length; i++) {
-                var item = stringify(node, i, node[i], level+1) || JSON.stringify(null);
+            out = [];
+            for (i = 0; i < node.length; i++) {
+                var item = stringify(node[i]) || JSON.stringify(null);
                 out.push(item);
             }
             return '[' + out.join(',') + ']';
         }
-        else {
-            if (seen.indexOf(node) !== -1) {
-                if (cycles) return JSON.stringify('__cycle__');
-                throw new TypeError('Converting circular structure to JSON');
-            }
-            else seen.push(node);
 
-            var keys = Object.keys(node).sort(cmp && cmp(node));
-            var out = [];
-            for (var i = 0; i < keys.length; i++) {
-                var key = keys[i];
-                var value = stringify(node, key, node[key], level+1);
-
-                if(!value) continue;
-
-                var keyValue = JSON.stringify(key) + ':' + value;
-                out.push(keyValue);
-            }
-            seen.splice(seen.indexOf(node), 1);
-            return '{' + out.join(',') + '}';
+        if (seen.indexOf(node) !== -1) {
+            if (cycles) return JSON.stringify('__cycle__');
+            throw new TypeError('Converting circular structure to JSON');
         }
-    })({ '': obj }, '', obj, 0);
+        else seen.push(node);
+
+        var keys = Object.keys(node).sort(cmp && cmp(node));
+        out = [];
+        for (i = 0; i < keys.length; i++) {
+            var key = keys[i];
+            var value = stringify(node[key]);
+
+            if(!value) continue;
+
+            var keyValue = JSON.stringify(key) + ':' + value;
+            out.push(keyValue);
+        }
+        seen.splice(seen.indexOf(node), 1);
+        return '{' + out.join(',') + '}';
+    })(obj, 0);
 };

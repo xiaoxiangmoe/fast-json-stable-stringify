@@ -5,12 +5,14 @@
   "main": "index.js",
   "devDependencies": {
     "coveralls": "^3.0.0",
+    "eslint": "^4.9.0",
     "nyc": "^11.2.1",
     "tape": "~1.0.4"
   },
   "scripts": {
+    "eslint": "eslint index.js test",
     "test-spec": "tape test/*.js",
-    "test": "nyc npm run test-spec"
+    "test": "npm run eslint && nyc npm run test-spec"
   },
   "repository": {
     "type": "git",
