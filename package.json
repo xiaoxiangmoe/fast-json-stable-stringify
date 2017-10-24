@@ -4,22 +4,13 @@
   "description": "deterministic JSON.stringify() to get deterministic hashes from stringified results",
   "main": "index.js",
   "devDependencies": {
+    "coveralls": "^3.0.0",
+    "nyc": "^11.2.1",
     "tape": "~1.0.4"
   },
   "scripts": {
-    "test": "tape test/*.js"
-  },
-  "testling": {
-    "files": "test/*.js",
-    "browsers": [
-      "ie/8..latest",
-      "ff/5",
-      "ff/latest",
-      "chrome/15",
-      "chrome/latest",
-      "safari/latest",
-      "opera/latest"
-    ]
+    "test-spec": "tape test/*.js",
+    "test": "nyc npm run test-spec"
   },
   "repository": {
     "type": "git",
@@ -38,5 +29,15 @@
     "email": "mail@substack.net",
     "url": "http://substack.net"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "nyc": {
+    "exclude": [
+      "test",
+      "node_modules"
+    ],
+    "reporter": [
+      "lcov",
+      "text-summary"
+    ]
+  }
 }
