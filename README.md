@@ -1,18 +1,17 @@
-# json-stable-stringify
+# fast-json-stable-stringify
 
 deterministic version of `JSON.stringify()` so you can get a consistent hash
 from stringified results
 
 You can also pass in a custom comparison function.
 
-[![browser support](https://ci.testling.com/substack/json-stable-stringify.png)](https://ci.testling.com/substack/json-stable-stringify)
+[![Build Status](https://travis-ci.org/epoberezkin/fast-json-stable-stringify.svg?branch=master)](https://travis-ci.org/epoberezkin/fast-json-stable-stringify)
 
-[![build status](https://secure.travis-ci.org/substack/json-stable-stringify.png)](http://travis-ci.org/substack/json-stable-stringify)
 
 # example
 
 ``` js
-var stringify = require('json-stable-stringify');
+var stringify = require('fast-json-stable-stringify');
 var obj = { c: 8, b: [{z:6,y:5,x:4},7], a: 3 };
 console.log(stringify(obj));
 ```
@@ -26,7 +25,7 @@ output:
 # methods
 
 ``` js
-var stringify = require('json-stable-stringify')
+var stringify = require('fast-json-stable-stringify')
 ```
 
 ## var str = stringify(obj, opts)
@@ -48,7 +47,7 @@ opts.cmp({ key: akey, value: avalue }, { key: bkey, value: bvalue })
 For example, to sort on the object key names in reverse order you could write:
 
 ``` js
-var stringify = require('json-stable-stringify');
+var stringify = require('fast-json-stable-stringify');
 
 var obj = { c: 8, b: [{z:6,y:5,x:4},7], a: 3 };
 var s = stringify(obj, function (a, b) {
@@ -66,7 +65,7 @@ which results in the output string:
 Or if you wanted to sort on the object values in reverse order, you could write:
 
 ```
-var stringify = require('json-stable-stringify');
+var stringify = require('fast-json-stable-stringify');
 
 var obj = { d: 6, c: 5, b: [{z:3,y:2,x:1},9], a: 10 };
 var s = stringify(obj, function (a, b) {
@@ -86,7 +85,7 @@ which outputs:
 With [npm](https://npmjs.org) do:
 
 ```
-npm install json-stable-stringify
+npm install fast-json-stable-stringify
 ```
 
 # license
