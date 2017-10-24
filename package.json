@@ -1,11 +1,15 @@
 {
   "name": "fast-json-stable-stringify",
   "version": "1.0.2",
-  "description": "deterministic JSON.stringify() to get deterministic hashes from stringified results",
+  "description": "deterministic `JSON.stringify()` - a faster version of substack's json-stable-strigify without jsonify",
   "main": "index.js",
   "devDependencies": {
+    "benchmark": "^2.1.4",
     "coveralls": "^3.0.0",
     "eslint": "^4.9.0",
+    "fast-stable-stringify": "latest",
+    "faster-stable-stringify": "latest",
+    "json-stable-stringify": "latest",
     "nyc": "^11.2.1",
     "pre-commit": "^1.2.2",
     "tape": "~1.0.4"

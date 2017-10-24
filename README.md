@@ -1,7 +1,6 @@
 # fast-json-stable-stringify
 
-deterministic version of `JSON.stringify()` so you can get a consistent hash
-from stringified results
+Deterministic `JSON.stringify()` - a faster version of @substack's json-stable-strigify without jsonify.
 
 You can also pass in a custom comparison function.
 
@@ -86,7 +85,7 @@ which outputs:
 
 Pass `true` in `opts.cycles` to stringify circular property as `__cycle__` - the result will not be a valid JSON string in this case.
 
-Without this option TypeError will be thrown.
+TypeError will be thrown in case of circular object without this option.
 
 
 # install
@@ -98,6 +97,23 @@ npm install fast-json-stable-stringify
 ```
 
 
+# benchmark
+
+To run benchmark (requires Node.js 6+):
+```
+node benchmark
+```
+
+Results:
+```
+fast-json-stable-stringify x 17,189 ops/sec ±1.43% (83 runs sampled)
+json-stable-stringify x 13,634 ops/sec ±1.39% (85 runs sampled)
+fast-stable-stringify x 20,212 ops/sec ±1.20% (84 runs sampled)
+faster-stable-stringify x 15,549 ops/sec ±1.12% (84 runs sampled)
+The fastest is fast-stable-stringify
+```
+
+
 # license
 
-MIT
+[MIT](https://github.com/epoberezkin/fast-json-stable-stringify/blob/master/LICENSE)
