@@ -29,12 +29,12 @@ module.exports = function (obj, opts) {
         }
         var i, out;
         if (Array.isArray(node)) {
-            out = [];
+            out = '[';
             for (i = 0; i < node.length; i++) {
-                var item = stringify(node[i]) || JSON.stringify(null);
-                out.push(item);
+                if (i) out += ',';
+                out += stringify(node[i]) || JSON.stringify(null);
             }
-            return '[' + out.join(',') + ']';
+            return out + ']';
         }
 
         if (seen.indexOf(node) !== -1) {
@@ -44,17 +44,16 @@ module.exports = function (obj, opts) {
         else seen.push(node);
 
         var keys = Object.keys(node).sort(cmp && cmp(node));
-        out = [];
+        out = '{';
         for (i = 0; i < keys.length; i++) {
             var key = keys[i];
             var value = stringify(node[key]);
 
-            if(!value) continue;
-
-            var keyValue = JSON.stringify(key) + ':' + value;
-            out.push(keyValue);
+            if (!value) continue;
+            if (out.length > 1) out += ',';
+            out += JSON.stringify(key) + ':' + value;
         }
         seen.splice(seen.indexOf(node), 1);
-        return '{' + out.join(',') + '}';
-    })(obj, 0);
+        return out + '}';
+    })(obj);
 };
