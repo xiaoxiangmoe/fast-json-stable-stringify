@@ -1,6 +1,6 @@
 # fast-json-stable-stringify
 
-Deterministic `JSON.stringify()` - a faster version of @substack's json-stable-strigify without jsonify.
+Deterministic `JSON.stringify()` - a faster version of [@substack](https://github.com/substack)'s json-stable-strigify without [jsonify](https://github.com/substack/jsonify).
 
 You can also pass in a custom comparison function.
 
