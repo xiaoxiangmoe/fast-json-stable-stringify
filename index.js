@@ -6,7 +6,6 @@ module.exports = function (obj, opts) {
     var space = opts.space || '';
     if (typeof space === 'number') space = Array(space+1).join(' ');
     var cycles = (typeof opts.cycles === 'boolean') ? opts.cycles : false;
-    var replacer = opts.replacer || function(key, value) { return value; };
 
     var cmp = opts.cmp && (function (f) {
         return function (node) {
@@ -26,8 +25,6 @@ module.exports = function (obj, opts) {
         if (node && node.toJSON && typeof node.toJSON === 'function') {
             node = node.toJSON();
         }
-
-        node = replacer.call(parent, key, node);
 
         if (node === undefined) {
             return;
