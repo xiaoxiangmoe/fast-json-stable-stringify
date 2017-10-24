@@ -21,6 +21,12 @@ test('object with null', function (t) {
     t.equal(stringify(obj), '{"a":3,"z":null}');
 });
 
+test('object with NaN and Infinity', function (t) {
+    t.plan(1);
+    var obj = { a: 3, b: NaN, c: Infinity };
+    t.equal(stringify(obj), '{"a":3,"b":null,"c":null}');
+});
+
 test('array with undefined', function (t) {
     t.plan(1);
     var obj = [4, undefined, 6];
