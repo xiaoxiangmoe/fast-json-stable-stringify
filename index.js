@@ -50,7 +50,7 @@ module.exports = function (obj, opts) {
             var value = stringify(node[key]);
 
             if (!value) continue;
-            if (out.length > 1) out += ',';
+            if (out[1]) out += ',';
             out += JSON.stringify(key) + ':' + value;
         }
         seen.splice(seen.indexOf(node), 1);
