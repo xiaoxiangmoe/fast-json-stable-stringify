@@ -22,6 +22,7 @@ output:
 {"a":3,"b":[{"x":4,"y":5,"z":6},7],"c":8}
 ```
 
+
 # methods
 
 ``` js
@@ -31,6 +32,7 @@ var stringify = require('fast-json-stable-stringify')
 ## var str = stringify(obj, opts)
 
 Return a deterministic stringified string `str` from the object `obj`.
+
 
 ## options
 
@@ -80,6 +82,13 @@ which outputs:
 {"d":6,"c":5,"b":[{"z":3,"y":2,"x":1},9],"a":10}
 ```
 
+### cycles
+
+Pass `true` in `opts.cycles` to stringify circular property as `__cycle__` - the result will not be a valid JSON string in this case.
+
+Without this option TypeError will be thrown.
+
+
 # install
 
 With [npm](https://npmjs.org) do:
@@ -87,6 +96,7 @@ With [npm](https://npmjs.org) do:
 ```
 npm install fast-json-stable-stringify
 ```
+
 
 # license
 
