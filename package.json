@@ -48,5 +48,8 @@
       "lcov",
       "text-summary"
     ]
+  },
+  "engines": {
+    "node": ">=8"
   }
 }
