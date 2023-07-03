@@ -1,2 +1,2 @@
 declare function stringify(obj: any): string;
-export = stringify;
+export default stringify;
